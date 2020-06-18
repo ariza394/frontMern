@@ -10,14 +10,25 @@ const Tarea = ({tarea}) => {
 
     //obtener context tareas
     const tareasContext = useContext(tareaContext);
-    const {eliminarTarea,obtenerTareas} = tareasContext;
+    const {eliminarTarea,obtenerTareas,actualizarTarea, guardarTareaActual} = tareasContext;
 
     const [proyectoActual] = proyecto;
 
     //funcion para eliminar tarea
     const tareaEliminar = id => {
-        eliminarTarea(id);
+        eliminarTarea(id,proyectoActual._id);
         obtenerTareas(proyectoActual.id)
+    }
+
+    //funcion cambia estado tarea
+    const cambiarEstado = tarea => {
+        tarea.estado = !tarea.estado;
+        actualizarTarea(tarea);
+    }
+
+    //Agrega a tarea actual
+    const seleccionarTarea = tarea => {
+        guardarTareaActual(tarea);
     }
 
     return ( 
@@ -30,6 +41,7 @@ const Tarea = ({tarea}) => {
                             <button
                                 type="button"
                                 className="completo"
+                                onClick={() => cambiarEstado(tarea)}
                             >Completo</button>
                         )
                     :   
@@ -37,6 +49,7 @@ const Tarea = ({tarea}) => {
                             <button
                                 type="button"
                                 className="incompleto"
+                                onClick={() => cambiarEstado(tarea)}
                             >Incompleto</button>
                         )
                 }
@@ -45,12 +58,13 @@ const Tarea = ({tarea}) => {
                 <button
                     type="button"
                     className="btn btn-primario"
+                    onClick={() => seleccionarTarea(tarea)}
                 >Editar</button>
 
                 <button
                     type="button"
                     className="btn btn-secundario"
-                    onClick={() => tareaEliminar(tarea.id)}
+                    onClick={() => tareaEliminar(tarea._id)}
                 >Eliminar</button>
             </div>
         </li>
