@@ -87,7 +87,7 @@ const FormTarea = () => {
                     <input 
                         type="text"
                         className="input-text"
-                        placeholder="Nombre Tarea"
+                        placeholder="Task Name"
                         name="nombre"
                         value={nombre}
                         onChange={handleChange}
@@ -97,11 +97,11 @@ const FormTarea = () => {
                     <input 
                         type="submit"
                         className="btn btn-primario btn-submit btn-block"
-                        value={tareaseleccionada ? 'Editar Tarea' : 'Agregar tarea'}
+                        value={tareaseleccionada ? 'Edit Task' : 'Add Task'}
                     />
                 </div>
             </form>
-            {errortarea ? <p className="mensaje error">Nombre de tarea Obligatorio</p>: null}
+            {errortarea ? <p className="mensaje error">Invalid Name</p>: null}
         </div>        
      );
 }

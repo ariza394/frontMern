@@ -47,7 +47,7 @@ const NuevoProyecto = () => {
                 type="button"
                 className="btn btn-block btn-primario"
                 onClick={mostrarFormulario}           
-            >Nuevo Proyecto</button>
+            >New project</button>
 
             {formulario ?
                 <form
@@ -57,7 +57,7 @@ const NuevoProyecto = () => {
                     <input 
                         type="text"
                         className="input-text"
-                        placeholder="Nombre Proyecto"
+                        placeholder="Project Name"
                         name="nombre"
                         value={nombre}
                         onChange={onChangeproyecto}
@@ -65,13 +65,13 @@ const NuevoProyecto = () => {
                     <input 
                         type="submit"
                         className="btn btn-primario btn-block"
-                        value="Agregar Proyecto"
+                        value="Add Project"
                     />
                 </form>
 
             : null}
 
-            {errorformulario ? <p className="mensaje error">El Nombre es obligatorio</p> : null}
+            {errorformulario ? <p className="mensaje error">Invalid Name</p> : null}
         </>
      );
 }

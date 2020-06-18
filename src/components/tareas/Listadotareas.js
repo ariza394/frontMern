@@ -15,7 +15,7 @@ const ListadoTareas = () => {
     const {tareasproyecto} = tareasContext;
 
     //si no hay proyecto
-    if(!proyecto) return <h2>Selecciona un Proyecto</h2>
+    if(!proyecto) return <h2>Select a Project</h2>
 
     //array destructuring para el arreglo
     const [proyectoActual] = proyecto; 
@@ -23,12 +23,12 @@ const ListadoTareas = () => {
     
     return ( 
         <>
-            <h2>proyecto: {proyectoActual.nombre}</h2>
+            <h2>Project: {proyectoActual.nombre}</h2>
 
             <ul className="listado-tareas">
                 {tareasproyecto.length === 0 
                 
-                    ? (<li className="tarea"><p>No Hay Tareas</p></li>)
+                    ? (<li className="tarea"><p>You Dont Have Task</p></li>)
 
                     : 
                     <TransitionGroup>
@@ -50,7 +50,7 @@ const ListadoTareas = () => {
                 type="button"
                 className="btn btn-eliminar"
                 onClick={() => eliminarProyecto(proyectoActual._id)}
-            >Eliminar Proyecto &times;</button>
+            >Delete Project &times;</button>
         </>
      );
 }

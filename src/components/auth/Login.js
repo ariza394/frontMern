@@ -45,19 +45,19 @@ const Login = (props) => {
         
         //validar campos vacios
         if(email.trim() === '' || password.trim() === ''){
-            mostrarAlerta('Todos los campos son obligatorios','alerta-error');
-        }
-        //pasarlo al action
-        iniciarSesion({email,password});
+            mostrarAlerta('Please write your name and password','alerta-error');
+        }else{
+            //pasarlo al action
+            iniciarSesion({email,password});    
+        }        
     };
 
 
 
     return ( 
-        <div className="form-usuario">
-            { alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) : null}
+        <div className="form-usuario">            
             <div className="contenedor-form sombra-dark">
-                <h1>Iniciar Sesion</h1>
+                <h1>LogIn</h1>
                 <form
                     onSubmit={onSubmit}
                 >
@@ -67,7 +67,7 @@ const Login = (props) => {
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="Tu Email"
+                            placeholder="Your Email"
                             value={email}
                             onChange={onChange}
                         />
@@ -78,17 +78,18 @@ const Login = (props) => {
                             type="password"
                             id="password"
                             name="password"
-                            placeholder="Tu Password"
+                            placeholder="your Password"
                             value={password}
                             onChange={onChange}
                         />
                     </div>
+                    { alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>) : null}
                     <div className="campo-form">
-                        <input type="submit" className="btn btn-primario btn-block" value="Iniciar Sesion"/>
+                        <input type="submit" className="btn btn-primario btn-block" value="Log In"/>
                     </div>
                 </form>
                 <Link to={'/nueva-cuenta'} className="enlace-cuenta">
-                    Obtener Cuenta
+                    Create Account
                 </Link>
             </div>
         </div>
